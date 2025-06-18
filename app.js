@@ -60,7 +60,6 @@ app.post('/login', (req, res) => {
 
             // Send token as a cookie
             res.cookie('token', token, { httpOnly: true });
-            console.log(token);
             res.redirect('/dashboard');
         } catch (e) {
             console.error(e);
@@ -73,7 +72,7 @@ app.post('/login', (req, res) => {
 
 
 app.get('/dashboard', authenticateToken, (req, res) => {
-    
+
     res.sendFile(path.join(__dirname, 'ui', 'dashboard.html'));
 });
 
